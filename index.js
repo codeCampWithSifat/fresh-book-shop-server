@@ -18,7 +18,6 @@ const client = new MongoClient(uri, {
 
 async function run() {
   try {
-    console.log("db connected");
     const booksCollection = client.db("Books_Collection");
     const books = booksCollection.collection("All_Books");
     const orders = booksCollection.collection("Order");
@@ -44,7 +43,6 @@ async function run() {
       const id = req.params.id;
       const query = { _id: ObjectId(id) };
       const result = await books.deleteOne(query);
-      console.log(result);
       res.send(result);
     });
     // add a singel book from the ui
